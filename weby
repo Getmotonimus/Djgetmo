@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DJ Getmo | Entertainment XL</title>
+    
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Custom styles for professional aesthetic and font */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d0d0d; /* Fallback dark color */
+            /* New background image: Colorado River in Bullhead City */
+            background-image: url('https://i.ibb.co/L5hY5M2/bullhead-city-river.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Makes background static on scroll */
+            position: relative; /* Needed for the overlay */
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        /* Overlay to darken the background image and maintain readability */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7); /* Dark overlay */
+            backdrop-filter: blur(3px); /* Subtle blur for elegance */
+            z-index: -1; /* Place behind content */
+        }
+        
+        /* Custom colors for buttons */
+        .btn-spotify {
+            background-color: #1DB954; /* Spotify Green */
+        }
+        .btn-spotify:hover {
+            background-color: #1ED760;
+        }
+        .btn-mixcloud {
+            background-color: #23A4D6; /* Mixcloud Blue */
+        }
+        .btn-mixcloud:hover {
+            background-color: #38B8E8;
+        }
+        .btn-google {
+            background-color: #4285F4; /* Google Blue */
+        }
+        .btn-google:hover {
+            background-color: #5B95F6;
+        }
+
+        /* Ensure content blocks remain distinct on the background */
+        .content-block {
+            background-color: rgba(31, 41, 55, 0.85); /* Slightly transparent dark gray */
+            backdrop-filter: blur(5px); /* Adds a subtle blur to the content blocks too */
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="max-w-4xl mx-auto relative z-10"> 
+
+        <!-- Header and Branding -->
+        <header class="text-center mb-10">
+            <h1 class="text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 mb-2">
+                DJ GETMO
+            </h1>
+            <p class="text-xl font-medium text-gray-300">
+                Official Entertainment XL Artist
+            </p>
+            <div class="w-24 h-1 bg-green-400 mx-auto mt-4 rounded-full"></div>
+        </header>
+
+        <!-- Main Link Buttons Section -->
+        <section class="mb-10 p-6 rounded-xl shadow-2xl content-block">
+            <h2 class="text-2xl font-semibold mb-4 text-center text-green-400">CONNECT & SUPPORT</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+
+                <!-- Spotify Button (Green) -->
+                <a href="#spotify-link" target="_blank" class="flex items-center justify-center p-3 rounded-xl font-bold transition duration-200 btn-spotify shadow-lg hover:shadow-green-500/50">
+                    <i data-lucide="headphones" class="w-6 h-6 mr-2"></i>
+                    Listen on Spotify
+                </a>
+
+                <!-- Mixcloud Button (Blue) -->
+                <a href="#mixcloud-link" target="_blank" class="flex items-center justify-center p-3 rounded-xl font-bold transition duration-200 btn-mixcloud shadow-lg hover:shadow-blue-500/50">
+                    <i data-lucide="cloud-fog" class="w-6 h-6 mr-2"></i>
+                    Check Mixcloud
+                </a>
+
+                <!-- Google Link Button (Blue) -->
+                <a href="#google-link" target="_blank" class="flex items-center justify-center p-3 rounded-xl font-bold transition duration-200 btn-google shadow-lg hover:shadow-indigo-500/50">
+                    <i data-lucide="mail" class="w-6 h-6 mr-2"></i>
+                    Contact / Google
+                </a>
+
+                <!-- Deposit Button (Red/Action) -->
+                <a href="#deposit-link" target="_blank" class="flex items-center justify-center p-3 rounded-xl font-bold transition duration-200 bg-red-600 hover:bg-red-700 shadow-lg hover:shadow-red-500/50">
+                    <i data-lucide="wallet" class="w-6 h-6 mr-2"></i>
+                    Secure Deposit
+                </a>
+            </div>
+        </section>
+
+        <!-- Booking and Calendar Section -->
+        <section class="mb-10 p-6 rounded-xl shadow-2xl content-block">
+            <h2 class="text-2xl font-semibold mb-6 text-center text-green-400">BOOK DJ GETMO FOR YOUR EVENT</h2>
+            
+            <form id="bookingForm" class="space-y-6">
+                
+                <!-- Date Input (Calendar) -->
+                <div>
+                    <label for="eventDate" class="block text-sm font-medium text-gray-300 mb-2 flex items-center">
+                        <i data-lucide="calendar" class="w-4 h-4 mr-2"></i>
+                        Select Event Date:
+                    </label>
+                    <input type="date" id="eventDate" name="eventDate" required 
+                           class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-green-500 focus:border-green-500 appearance-none">
+                </div>
+
+                <!-- Time Dropdown -->
+                <div>
+                    <label for="eventTime" class="block text-sm font-medium text-gray-300 mb-2 flex items-center">
+                        <i data-lucide="clock" class="w-4 h-4 mr-2"></i>
+                        Select Start Time:
+                    </label>
+                    <select id="eventTime" name="eventTime" required 
+                            class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-green-500 focus:border-green-500 appearance-none">
+                        <option value="">-- Choose a time slot --</option>
+                        <!-- Common Evening Slots -->
+                        <option value="18:00">6:00 PM</option>
+                        <option value="19:00">7:00 PM</option>
+                        <option value="20:00">8:00 PM</option>
+                        <option value="21:00">9:00 PM</option>
+                        <option value="22:00">10:00 PM</option>
+                        <!-- Late Night/Morning Slots -->
+                        <option value="23:00">11:00 PM</option>
+                        <option value="00:00">12:00 AM</option>
+                        <option value="01:00">1:00 AM</option>
+                    </select>
+                </div>
+
+                <!-- Venue Dropdown -->
+                <div>
+                    <label for="eventVenue" class="block text-sm font-medium text-gray-300 mb-2 flex items-center">
+                        <i data-lucide="map-pin" class="w-4 h-4 mr-2"></i>
+                        Select Venue Type:
+                    </label>
+                    <select id="eventVenue" name="eventVenue" required 
+                            class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-green-500 focus:border-green-500 appearance-none">
+                        <option value="">-- Select a venue type --</option>
+                        <option value="Wedding">Wedding / Private Party</option>
+                        <option value="Nightclub">Nightclub / Bar</option>
+                        <option value="Corporate">Corporate Event</option>
+                        <option value="Festival">Festival / Outdoor Event</option>
+                        <option value="Other">Other / Custom</option>
+                    </select>
+                </div>
+
+                <!-- Custom Message/Details Input -->
+                <div>
+                    <label for="details" class="block text-sm font-medium text-gray-300 mb-2">
+                        Event Details / Message:
+                    </label>
+                    <textarea id="details" name="details" rows="3" 
+                              class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-green-500 focus:border-green-500" 
+                              placeholder="Type your contact info and event details here..."></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="w-full py-3 bg-green-500 hover:bg-green-600 rounded-xl font-bold text-gray-900 transition duration-200 shadow-xl hover:shadow-green-500/50">
+                    Submit Booking Request
+                </button>
+                
+                <!-- Message Box for Feedback -->
+                <div id="messageBox" class="hidden p-4 mt-4 bg-yellow-900 border border-yellow-700 text-yellow-300 rounded-lg" role="alert"></div>
+
+            </form>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center text-gray-500 text-sm pt-8">
+            &copy; 2025 Entertainment XL. All Rights Reserved.
+        </footer>
+    </div>
+
+    <!-- JavaScript for Form Handling and Icon Replacement -->
+    <script>
+        // Replace Lucide data-lucide attributes with SVG icons
+        lucide.createIcons();
+
+        // Get today's date and set it as the minimum selectable date
+        document.addEventListener('DOMContentLoaded', () => {
+            const dateInput = document.getElementById('eventDate');
+            if (dateInput) {
+                const today = new Date();
+                const dd = String(today.getDate()).padStart(2, '0');
+                const mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+                const yyyy = today.getFullYear();
+                const minDate = yyyy + '-' + mm + '-' + dd;
+                dateInput.setAttribute('min', minDate);
+            }
+        });
+
+        // Form Submission Handler
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const date = document.getElementById('eventDate').value;
+            const time = document.getElementById('eventTime').value;
+            const venue = document.getElementById('eventVenue').value;
+            const details = document.getElementById('details').value;
+            const messageBox = document.getElementById('messageBox');
+            
+            // Basic validation
+            if (!date || !time || !venue) {
+                showMessage("Please fill out all required fields (Date, Time, Venue).", "error");
+                return;
+            }
+
+            // Simulate sending data and show a success message
+            // In a real application, this is where you'd send an API request to a booking system
+            const bookingData = {
+                date: date,
+                time: time,
+                venue: venue,
+                details: details.substring(0, 100) + '...'
+            };
+
+            console.log("--- BOOKING REQUEST SUBMITTED ---");
+            console.log(bookingData);
+            console.log("----------------------------------");
+
+            showMessage(`Booking request for ${date} at ${time} for a ${venue} event has been simulated. DJ GETMO will be in touch! (Check console for full data)`, "success");
+
+            // Clear form after simulated submission
+            this.reset();
+        });
+
+        /**
+         * Displays a temporary message in the message box.
+         * @param {string} message - The message to display.
+         * @param {string} type - 'success' or 'error' to set colors.
+         */
+        function showMessage(message, type) {
+            const messageBox = document.getElementById('messageBox');
+            messageBox.textContent = message;
+            messageBox.classList.remove('hidden', 'bg-red-900', 'border-red-700', 'text-red-300', 'bg-yellow-900', 'border-yellow-700', 'text-yellow-300');
+            
+            if (type === 'success') {
+                messageBox.classList.add('bg-green-900', 'border-green-700', 'text-green-300');
+            } else if (type === 'error') {
+                 messageBox.classList.add('bg-red-900', 'border-red-700', 'text-red-300');
+            } else {
+                messageBox.classList.add('bg-yellow-900', 'border-yellow-700', 'text-yellow-300');
+            }
+
+            // Hide after 5 seconds
+            setTimeout(() => {
+                messageBox.classList.add('hidden');
+            }, 5000);
+        }
+
+    </script>
+</body>
+</html>
